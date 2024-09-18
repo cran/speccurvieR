@@ -1,7 +1,7 @@
 Package: speccurvieR
 Type: Package
 Title: Easy, Fast, and Pretty Specification Curve Analysis
-Version: 0.3.0
+Version: 0.4.0
 Authors@R: person("Zayne", "Sember", email = "zsember@ucsd.edu",
   role = c("aut", "cre", "cph"))
 Description: Making specification curve analysis easy, fast, and pretty. It 
@@ -13,15 +13,15 @@ Description: Making specification curve analysis easy, fast, and pretty. It
 Encoding: UTF-8
 LazyData: true
 Imports: ggplot2, magrittr, tidyr, dplyr, stringr, combinat, fixest,
-        pbapply, parallel
-RoxygenNote: 7.2.3
+        pbapply, parallel, lmtest, sandwich
+RoxygenNote: 7.3.1
 License: MIT + file LICENSE
 URL: https://github.com/zaynesember/speccurvieR
 BugReports: https://github.com/zaynesember/speccurvieR/issues
 NeedsCompilation: no
-Packaged: 2024-01-24 19:25:19 UTC; zayne
+Packaged: 2024-09-18 22:54:19 UTC; zayne
 Author: Zayne Sember [aut, cre, cph]
 Maintainer: Zayne Sember <zsember@ucsd.edu>
 Depends: R (>= 3.5.0)
 Repository: CRAN
-Date/Publication: 2024-01-24 19:40:02 UTC
+Date/Publication: 2024-09-18 23:20:02 UTC

@@ -1,9 +1,9 @@
-43ec624dd19fb1f38a4aba7e5bb9ee79 *DESCRIPTION
+2a91401d924340079c624925d2e729a3 *DESCRIPTION
 84659523c6a50c65cabc7d9e0dc1e752 *LICENSE
 3f06b22ba270bd31a9d54ae987bf9dfd *NAMESPACE
-a5b5da555bf6ab29711c35a9d513bb68 *NEWS.md
+e1ae30147a5ed3fe4a435ec6e8064072 *NEWS.md
 478a5869ca16d22ba584f5dfa343eda4 *R/data.R
-b1e50f3d448ac83667f3c33a0af1fb6e *R/functions.R
+321b470ac987cd018507f28c4b22ea6c *R/functions.R
 2132ab2ea93b575a582b95569b23f7bf *R/globals.R
 f1292a62cf939ac5ad4ab511214737ae *R/helpers.R
 6ef597f71a457a381b0dfccd2913e7dd *R/speccurvieR-package.R
@@ -32,7 +32,7 @@ c661327cbb1232250e34b39790fa1d97 *man/plotCurve.Rd
 3e13c4a33a08d95d8c55d9790248fa32 *man/plotR2Adj.Rd
 66364cdceca47545563d2ea2e8664e80 *man/plotRMSE.Rd
 538329eaa2958ae924c45e0d6a27525d *man/plotVars.Rd
-b2813afe5adadc87309a028cc6c54a54 *man/sca.Rd
+bedc2f7221da78e8e5280770aed4eb65 *man/sca.Rd
 db688cf4178c94723fc0035141cc866d *man/scp.Rd
 94af40b67dc0a966adb72e27acaccc3d *man/se_boot.Rd
 4e4eb83bb474a39fab160cc40c06d2ba *man/se_compare.Rd

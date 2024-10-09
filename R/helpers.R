@@ -236,6 +236,8 @@ scp <- function(sca_data){
 #'                  estimated with a random subset of the data.
 #' @param sample_size An integer indicating how many observations are in each
 #'                    random subset of the data.
+#' @param weights Optional string with the column name in `data` that contains
+#'                weights.
 #'
 #' @return A named list containing bootstrapped standard errors for each
 #'         coefficient.
@@ -254,10 +256,13 @@ scp <- function(sca_data){
 #'         formula = "y ~ x1 + x2 | ID",
 #'         n_x = 2, n_samples = 10, sample_size = 1000)
 #'
-se_boot <- function(data, formula, n_x, n_samples, sample_size){
+se_boot <- function(data, formula, n_x, n_samples, sample_size, weights=NULL){
 
   # Check for fixed effects in the formula
   FE <- ifelse(grepl("|", formula, fixed=T), T, F)
+
+  # Create a list of NAs to return for cases when bootstrapping fails
+  fallback_list <- as.list(rep(NA, n_x + 1))
 
   # Create a matrix to store the coefficient estimates, each row contains
   # coefficients estimated from a different subset of the data
@@ -276,11 +281,28 @@ se_boot <- function(data, formula, n_x, n_samples, sample_size){
     model <- tryCatch(
       {
         if(FE){
-          suppressMessages(feols(as.formula(formula),
-                                 sample_n(data, sample_size)))
+          if(is.null(weights)){
+            suppressMessages(feols(as.formula(formula),
+                                   sample_n(data, sample_size)))
+          }
+          else{
+            suppressMessages(feols(as.formula(formula),
+                                   sample_n(data, sample_size),
+                                   weights=data[[weights]]))
+          }
         }
         else{
-          suppressMessages(lm(as.formula(formula), sample_n(data, sample_size)))
+          if(is.null(weights)){
+            suppressMessages(lm(as.formula(formula),
+                                sample_n(data, sample_size)))
+          }
+          else{
+            fmla <- as.formula(formula)
+            environment(fmla) <- environment()
+            suppressMessages(lm(fmla,
+                                sample_n(data, sample_size),
+                                weights=get(weights)))
+          }
         }
       },
       error=function(cond){
@@ -299,11 +321,11 @@ se_boot <- function(data, formula, n_x, n_samples, sample_size){
                        .\n"))
         }
 
-        return(NULL)
+        return(fallback_list)
       }
     )
     # If the model can't be estimated then return NULL
-    if(is.null(model)) return(NULL)
+    if(is.null(model)) return(fallback_list)
     # Catch instances where coefficients aren't estimated due to
     # collinearity. We can't in good conscience estimate bootstrapped SEs
     # from different numbers of coefficients, it could bias the SEs.
@@ -314,7 +336,7 @@ se_boot <- function(data, formula, n_x, n_samples, sample_size){
                      " during bootstrap of fixed effects model with n_samples=",
                      n_samples, " and sample_size=", sample_size,
                      ".\nConsider respecifying bootstrap parameters.\n"))
-      return(NULL)
+      return(fallback_list)
     }
     else if(!FE & length(model$coefficients) != n_x+1){
 
@@ -325,7 +347,7 @@ se_boot <- function(data, formula, n_x, n_samples, sample_size){
                      with n_samples=",
                      n_samples, " and sample_size=", sample_size,
                      ".\nConsider respecifying bootstrap parameters.\n"))
-      return(NULL)
+      return(fallback_list)
     }
 
     # Store the coefficient estimates in row i of our matrix

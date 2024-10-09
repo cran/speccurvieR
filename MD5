@@ -1,11 +1,11 @@
-2a91401d924340079c624925d2e729a3 *DESCRIPTION
+cd20a4a3fc4651648a6dd65179b98db0 *DESCRIPTION
 84659523c6a50c65cabc7d9e0dc1e752 *LICENSE
 3f06b22ba270bd31a9d54ae987bf9dfd *NAMESPACE
-e1ae30147a5ed3fe4a435ec6e8064072 *NEWS.md
+150dafdde9cee0cd6ae167c0298b958a *NEWS.md
 478a5869ca16d22ba584f5dfa343eda4 *R/data.R
-321b470ac987cd018507f28c4b22ea6c *R/functions.R
+ca6f2b6cd5b9ed5475e7328c53fe79d7 *R/functions.R
 2132ab2ea93b575a582b95569b23f7bf *R/globals.R
-f1292a62cf939ac5ad4ab511214737ae *R/helpers.R
+cefbe19561fb2adf74e9ae7a8d1dedd6 *R/helpers.R
 6ef597f71a457a381b0dfccd2913e7dd *R/speccurvieR-package.R
 f01682ffd9d5582c0d3b8a226f3c2b16 *build/partial.rdb
 cd449729d781e10b45d5495972fe5bf3 *data/bottles.RData
@@ -34,7 +34,7 @@ c661327cbb1232250e34b39790fa1d97 *man/plotCurve.Rd
 538329eaa2958ae924c45e0d6a27525d *man/plotVars.Rd
 bedc2f7221da78e8e5280770aed4eb65 *man/sca.Rd
 db688cf4178c94723fc0035141cc866d *man/scp.Rd
-94af40b67dc0a966adb72e27acaccc3d *man/se_boot.Rd
-4e4eb83bb474a39fab160cc40c06d2ba *man/se_compare.Rd
+a9d787feff2f8baa293567be182bd1d0 *man/se_boot.Rd
+abea4836cee150f71ee8b8bb217d95a3 *man/se_compare.Rd
 9f133d569c2869a853bae344d8ed0f8d *man/speccurvieR-package.Rd
 e9afc6bb0d1d407fe2b2f8c36300aef4 *man/unAsIs.Rd
